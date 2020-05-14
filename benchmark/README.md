@@ -23,29 +23,6 @@
 	```
 	./oltpbench/oltpbenchmark -b tpcc -o output -s 10 --config config/tpcc_config.xml --load true --execute true
 	```
-
+这里 -s 10是和stealthdb一样的参数不要动，然后关于stealthdb里面各个scale的改动在config/tpcc_config.xml这里面有个scale factor可以修改。
+--load是把benchmark数据load到数据库中，--execute 是开始执行benchmark，它俩可以分开执行.
 3. The output will be in the folder results/ containing files with the listing of start time and duration for each transaction type (output.raw), the throughput and different latency measures in milliseconds (output.res)
-
-### TPC-H
-1. Create tables and relations between them
-
-	```
-	psql -U test -d test -f db_schemas/tpch-schema.sql
-	(or psql -U test -d test -f db_schemas/tpch-schema_encrypted.sql)
-	psql -U test -d test -f db_schemas/tpch-index.sql
-	```
-
-2. Generate tables
-
-	```
-	tool/dbgen -s 2
-	```
-
-3.  Run experiments
-
-	```
-	java -Dlog4j.configuration=log4j.properties -jar bin/tpch.jar -b tpch -o output -s 10 --config config/tpch_config.xml --load true --execute true
-	```
-
-4. The output will be in the folder results/ containing files with the listing of start time and duration for each transaction type (output.csv), the throughput and different latency measures in milliseconds (output.res)
-
