@@ -6,8 +6,6 @@
 	psql
 	postgres> CREATE USER test WITH PASSWORD 'password';
 	postgres> CREATE DATABASE test;
-	postgres> \c test;
-	postgres> CREATE EXTENSION encdb;
 	```
 
 ### TPC-C
@@ -25,4 +23,6 @@
 	```
 这里 -s 10是和stealthdb一样的参数不要动，然后关于stealthdb里面各个scale的改动在config/tpcc_config.xml这里面有个scale factor可以修改。
 --load是把benchmark数据load到数据库中，--execute 是开始执行benchmark，它俩可以分开执行.
+
+
 3. The output will be in the folder results/ containing files with the listing of start time and duration for each transaction type (output.raw), the throughput and different latency measures in milliseconds (output.res)
